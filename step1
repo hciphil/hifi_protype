@@ -1,0 +1,188 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+// Define reusable constants
+const double phoneWidth   =  400;
+const double phoneHeight  =  800;
+const double phoneMargins =   50; 
+const double viewHeight   =   720;
+const double navBarHeight = phoneHeight - viewHeight;
+const double navBarFontSize = 12;
+const double navBarMargins = 15;
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // First Phone with View 1
+               PhoneContainer(
+                color: Colors.blueAccent,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: viewHeight,
+                        width: phoneWidth,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.phone_android, size: 40, color: Colors.white),
+                            SizedBox(height: 10),
+                            Text(
+                              'Phone 1 View',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: navBarHeight,
+                        width: phoneWidth,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              child: Column(
+                                children: [
+                                  Icon(Icons.home, size:40, color: Colors.black),
+                                  Text('Home',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: navBarFontSize,
+                                  ),),
+                                ],
+                              ),
+                              margin: EdgeInsets.symmetric(horizontal: navBarMargins),
+                            ),
+                            Container(
+                              child: Column(
+                                children: [
+                                  Icon(Icons.lightbulb, size:40, color: Colors.black),
+                                  Text('Thoughts',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: navBarFontSize,
+                                  ),),
+                                ],
+                              ),
+                              margin: EdgeInsets.symmetric(horizontal: navBarMargins),
+                            ),
+                            Container(
+                              child: Column(
+                                children: [
+                                  Icon(Icons.calendar_month, size:40, color: Colors.black),
+                                  Text('Tasks',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: navBarFontSize,
+                                  ),),
+                                ],
+                              ),
+                              margin: EdgeInsets.symmetric(horizontal: navBarMargins),
+                            ),
+                            Container(
+                              child: Column(
+                                children: [
+                                  Icon(Icons.assistant, size:40, color: Colors.black),
+                                  Text('Help',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: navBarFontSize,
+                                  ),),
+                                ],
+                              ),
+                              margin: EdgeInsets.symmetric(horizontal: navBarMargins),
+                            ),
+                            Container(
+                              child: Column(
+                                children: [
+                                  Icon(Icons.settings, size:40, color: Colors.black),
+                                  Text('Settings',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: navBarFontSize,
+                                  ),),
+                                ],
+                              ),
+                              margin: EdgeInsets.symmetric(horizontal: navBarMargins),
+                            ),
+
+                        ],)
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // Second Phone with View 2
+              PhoneContainer(
+                color: Colors.greenAccent,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.phone_android, size: 40, color: Colors.white),
+                      SizedBox(height: 10),
+                      Text(
+                        'Phone 2 View',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// Reusable widget for the phone container
+class PhoneContainer extends StatelessWidget {
+  final Color color;
+  final Widget child;
+
+  const PhoneContainer({
+    Key? key,
+    required this.color,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: phoneWidth,
+      height: phoneHeight,
+      color: color,
+      margin: const EdgeInsets.all(phoneMargins),
+      child: child,
+    );
+  }
+}
